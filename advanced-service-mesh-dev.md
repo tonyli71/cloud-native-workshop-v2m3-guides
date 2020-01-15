@@ -10,6 +10,13 @@ If you haven't done Module 1 or Module 2 today, **or you didn't quite complete t
 
 > Replace `userXX` with your username before running these commands:
 
+hack the scripts, change 
+`oc new-build registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift:1.5 --binary --name=inventory-quarkus -l app=inventory-quarkus`
+
+to 
+
+`oc new-build -i redhat-openjdk18-openshift:1.5 --binary --name=inventory-quarkus -l app=inventory-quarkus`
+
 `sh /projects/cloud-native-workshop-v2m3-labs/istio/scripts/deploy-inventory.sh userXX`
 
 `sh /projects/cloud-native-workshop-v2m3-labs/istio/scripts/deploy-catalog.sh userXX`
@@ -540,11 +547,11 @@ oc -n userXX-catalog new-app ccn-sso72 \
    -p SSO_SERVICE_PASSWORD=openshift
 ~~~
 
-for openshift 4.2, service mesh is GA, but this road show is for TP, so we need to fix router issue.
+<!-- for openshift 4.2, service mesh is GA, but this road show is for TP, so we need to fix router issue.
 
 `oc delete route sso -n userXX-catalog`
 
-`oc delete route secure-sso -n userXX-catalog`
+`oc delete route secure-sso -n userXX-catalog` -->
 
 for network policy, add belows to the end of /projects/cloud-native-workshop-v2m3-labs/catalog/rules/catalog-default.yaml
 
